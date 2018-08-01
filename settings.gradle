@@ -1,0 +1,6 @@
+rootProject.name = 'ecommerce-data-app'
+include "applications/account"
+include "applications/order"
+include "applications/product"
+include "applications/shipment"
+

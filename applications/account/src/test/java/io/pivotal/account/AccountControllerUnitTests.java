@@ -20,8 +20,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -113,6 +122,19 @@ public class AccountControllerUnitTests {
         .andReturn();
   }
 
+  @Test
+  public void testGetAllAccounts(){
+    Set<Account> testSet = new HashSet<>(Arrays.asList(
+        new Account("Ryan", "Reynolds", "rreynolds@deadpool.com"),
+        new Account("Patrick", "Stewart", "pstewwy@gmail.com"),
+        new Account("God", "Zilla", "gzilla@aol.com")
+    ));
+    when(accountRepository.findAll()).thenReturn(testSet);
+
+    List<Account> resp = accountController.accounts();
+    assertNotNull(resp);
+    assertEquals(3, resp.size());
+  }
 
 
   public static String convertObjectToJson(Object object) throws IOException {

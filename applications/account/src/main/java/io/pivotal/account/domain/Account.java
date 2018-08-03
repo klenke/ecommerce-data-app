@@ -32,13 +32,6 @@ public class Account {
     this.email = email;
   }
 
-  public Account(String firstName, String lastName, String email, Set<Address> addresses) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.addresses = addresses;
-  }
-
   public Long getId() {
     return id;
   }

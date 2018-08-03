@@ -1,4 +1,4 @@
-package io.pivotal.order;
+package io.pivotal.order.domain;
 
 
 import io.pivotal.order.domain.Address;

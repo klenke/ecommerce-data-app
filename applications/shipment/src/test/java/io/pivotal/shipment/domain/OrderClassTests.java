@@ -1,4 +1,4 @@
-package io.pivotal.shipment;
+package io.pivotal.shipment.domain;
 
 
 import io.pivotal.shipment.domain.Order;
@@ -43,13 +43,34 @@ public class OrderClassTests {
   }
 
   @Test
+  public void testSetOrderNumber(){
+    Long orderNumber = 12L;
+    order.setOrderNumber(orderNumber);
+    assertEquals(orderNumber, order.getOrderNumber());
+  }
+
+  @Test
   public void testGetAccountId(){
     assertEquals(2L, order.getAccountId().longValue());
   }
 
   @Test
+  public void testSetAccountId(){
+    Long accountId = 15L;
+    order.setAccountId(accountId);
+    assertEquals(accountId, order.getAccountId());
+  }
+
+  @Test
   public void testGetOrderDate(){
     assertEquals(new Date(12345), order.getOrderDate());
+  }
+
+  @Test
+  public void testSetOrderDate() {
+    Date date = new Date(11111);
+    order.setOrderDate(date);
+    assertEquals(date, order.getOrderDate());
   }
 
   @Test

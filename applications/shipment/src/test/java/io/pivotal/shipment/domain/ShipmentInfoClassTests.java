@@ -1,4 +1,4 @@
-package io.pivotal.shipment;
+package io.pivotal.shipment.domain;
 
 import io.pivotal.shipment.domain.ShipmentInfo;
 import org.junit.Before;

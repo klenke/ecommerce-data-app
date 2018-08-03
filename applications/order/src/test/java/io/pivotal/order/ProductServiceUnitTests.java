@@ -49,6 +49,6 @@ public class ProductServiceUnitTests {
   @Test
   public void testDefaultName(){
     String resp = productService.defaultName(1L);
-    assertEquals("1", resp);
+    assertEquals("Name not found for product id 1", resp);
   }
 }

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@RunWith(SpringRunner.class)
+/*@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class OrderLineItemControllerIntegrationTests {
 
@@ -62,4 +62,4 @@ public class OrderLineItemControllerIntegrationTests {
     assertNull(resp);
   }
 
-}
+}*/

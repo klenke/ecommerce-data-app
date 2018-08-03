@@ -28,6 +28,6 @@ public class ProductService {
   }
 
   public String defaultName(Long productId){
-    return productId.toString();
+    return "Name not found for product id " + productId.toString();
   }
 }

@@ -26,7 +26,9 @@ import static org.mockito.Matchers.anyLong;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.eq;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -120,8 +122,34 @@ public class OrderLineItemControllerUnitTests {
         .andReturn();
   }
 
+  @Test
+  public void testUpdate() throws Exception {
+    OrderLineItem orderLineItem = new OrderLineItem(1L, 1, 1L, 1L, null);
+    orderLineItem.setId(13L);
+    when(orderLineItemRepository.findOne(anyLong())).thenReturn(orderLineItem);
+
+    mockMvc
+        .perform(put("/lineItems")
+            .param("quantity", "5")
+            .param("id", orderLineItem.getId().toString())
+            .param("productId", orderLineItem.getProductId().toString())
+            .param("price", "12.50")
+            .param("shipmentId", "14"))
+        .andExpect(status().isOk())
+        .andReturn();
+  }
 
 
+  @Test
+  public void testGetById() throws Exception {
+    OrderLineItem orderLineItem = new OrderLineItem(1L, 1, 1L, 1L, null);
+    when(orderLineItemRepository.findOne(anyLong())).thenReturn(orderLineItem);
+
+    mockMvc
+        .perform(get("/lineItems/{id}", "1"))
+        .andExpect(status().isOk())
+        .andReturn();
+  }
 
 
 

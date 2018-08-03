@@ -13,7 +13,7 @@ public class ProductService {
     this.restTemplate = restTemplate;
   }
 
-  @HystrixCommand(fallbackMethod = "getPriceForProductIdFallback")
+  /*@HystrixCommand(fallbackMethod = "getPriceForProductIdFallback")
   public double getPriceForProductId(Long productId){
     return restTemplate.getForObject("//product-service/products/" + productId + "/price",  Double.class);
   }
@@ -21,7 +21,7 @@ public class ProductService {
   public double getPriceForProductIdFallback(Long productId){
     return -1d;
   }
-
+*/
   @HystrixCommand(fallbackMethod = "defaultName")
   public String getProductName(Long productId){
     return restTemplate.getForObject("//product-service/products/" + productId + "/name", String.class);

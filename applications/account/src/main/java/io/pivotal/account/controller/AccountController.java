@@ -78,13 +78,13 @@ public class AccountController {
   }
 
   @DeleteMapping("/{id}")
-  public String deleteAccount(@PathVariable("id") String id){
+  public ResponseEntity<String> deleteAccount(@PathVariable("id") String id){
     try{
       accountRepository.delete(Long.parseLong(id));
     } catch (Exception e){
-      return "Error";
+      return new ResponseEntity<>("Error", HttpStatus.NOT_MODIFIED);
     }
-    return "Done";
+    return new ResponseEntity<>("Done", HttpStatus.OK);
   }
 
   @GetMapping()
